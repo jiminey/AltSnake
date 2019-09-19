@@ -8,6 +8,9 @@ export class Snake {
   private cellWidth: number;
   private cellHeight: number;
   private updateFrame: number = 0;
+  private snake:number[][] = [];
+  private head:number[] = [];
+  private tail:number[] = [];
 
   constructor(private canvas: HTMLCanvasElement) {
     this.ctx = canvas.getContext("2d");
@@ -16,9 +19,11 @@ export class Snake {
     let canvasHeight = canvas.height;
     this.cellWidth = canvasWidth / Settings.board.dimX;
     this.cellHeight = canvasHeight / Settings.board.dimY;
-
     this.x = 0;
     this.y = 0;
+    this.snake = [ [0,0], [1,0], [2,0] ]
+    this.head = this.snake[this.snake.length - 1] //last item
+    this.tail = this.snake[0]
 
     document.addEventListener("keydown", event => {
       switch (event.key) {
@@ -53,24 +58,33 @@ export class Snake {
 
 
   draw() {
-    this.ctx.fillStyle = "#ff0000";
-    this.ctx.fillRect(
-      this.x * this.cellWidth,
-      this.y * this.cellHeight,
-      30,
-      30
-    );
+    for (let i = 0; i < this.snake.length ; i++) {
+      this.ctx.fillStyle = "#ff0000";
+      this.ctx.fillRect(
+        this.snake[i][0] * this.cellWidth,
+        this.snake[i][1] * this.cellHeight,
+        30,
+        30
+      );
+    }
   }
 
   update() {
     this.updateFrame++;
+
     if (this.updateFrame % 10 === 0) {
       switch (this.dir) {
         case "Down": 
-          this.y++
+          this.tail = this.snake.shift(); //remove tail
+          this.tail[0] = this.head[0];
+          this.tail[1] += 1; 
+          this.snake.push(this.tail);
           break;
         case "Up": 
-          this.y--
+          this.tail = this.snake.shift();
+          this.tail[0] = this.head[0];
+          this.tail[1] -= 1;
+          this.snake.push(this.tail);
           break;
         case "Left": 
           this.x--
