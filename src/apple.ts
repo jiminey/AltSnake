@@ -17,13 +17,13 @@ export class Apple {
         this.cellHeight = canvasHeight / Settings.board.dimY;
     }
 
-    function getRandomInt(max) {
+    getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
 
     draw() {
         for(let i = 0; i < this.basket.length; i++) {
-            this.ctx.fillStyle = #f50;
+            this.ctx.fillStyle = "#f500";
             this.ctx.fillRect(
                 this.basket[i][0] * this.cellWidth, //x
                 this.basket[i][1] * this.cellHeight, //y
@@ -37,7 +37,10 @@ export class Apple {
         this.updateFrame++;
 
         if (this.updateFrame % 100 === 0) {
-            this.basket.push([random, ])
+            this.basket.push([
+                Math.floor(Math.random() * Math.floor(Settings.board.dimX)),
+                Math.floor(Math.random() * Math.floor(Settings.board.dimY)),
+            ])
         }
     }
 }
