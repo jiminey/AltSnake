@@ -1,4 +1,7 @@
 import * as Settings from "./settings";
+import {Apple, Basket} from "./apple"
+
+
 
 export class Snake {
   private ctx: CanvasRenderingContext2D;
@@ -13,6 +16,7 @@ export class Snake {
   private head:number[] = [];
   private tail:number[] = [];
   private canMove: boolean;
+
 
   constructor(private canvas: HTMLCanvasElement) {
     this.ctx = canvas.getContext("2d");
@@ -154,5 +158,8 @@ export class Snake {
       if (this.head[1] >= Settings.board.dimY) this.head[1] = 0; //bottom bound
       if (this.head[1] < 0) this.head[1] = Settings.board.dimY; //top bound
     }
+
+    //collision
+
   }
 }

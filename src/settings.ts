@@ -1,4 +1,4 @@
 export const board = {
-  dimX: 10,
-  dimY: 10,
+  dimX: 13,
+  dimY: 13,
 }

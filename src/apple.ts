@@ -1,23 +1,30 @@
 import * as Settings from "./settings";
 
+
+type AppleCoordinate = [number, number];
+export type Basket = AppleCoordinate[];
+
 export class Apple {
     private ctx: CanvasRenderingContext2D;
-    private basket:number[][] = [];
+    private basket: Basket = [];
+    private appleCoord: AppleCoordinate;
     private updateFrame:number = 0;
     private cellWidth: number;
     private cellHeight: number;
 
     constructor(private canvas: HTMLCanvasElement) {
         this.ctx = canvas.getContext("2d");
-        this.basket = [ [3,4] ]
+        this.appleCoord = [3,4]
+        this.basket = [this.appleCoord]
         
         let canvasWidth = canvas.width;
         let canvasHeight = canvas.height;
         this.cellWidth = canvasWidth / Settings.board.dimX;
         this.cellHeight = canvasHeight / Settings.board.dimY;
     }
-
+    
     draw() {
+
         for(let i = 0; i < this.basket.length; i++) {
             this.ctx.fillStyle = "green";
             this.ctx.fillRect(
@@ -33,10 +40,12 @@ export class Apple {
         this.updateFrame++;
 
         if (!this.basket.length) {
-            this.basket.push([
+            this.appleCoord = [
                 Math.floor(Math.random() * Math.floor(Settings.board.dimX)),
-                Math.floor(Math.random() * Math.floor(Settings.board.dimY)),
-            ])
+                Math.floor(Math.random() * Math.floor(Settings.board.dimY))
+            ]
+
+            this.basket.push(this.appleCoord);
         }
     }
 }
