@@ -87,24 +87,36 @@ export class Snake {
 
           this.tail = this.snake.shift(); //remove tail
           this.tail[0] = this.head[0]; //reassign tail coords
-          this.tail[1] = this.head[1] + 1;
+          this.tail[1] = this.head[1] - 1;
           this.snake.push(this.tail); //add tail to front
           this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
 
           break;
         case "Left": 
-          this.x--
+
+          this.tail = this.snake.shift(); //remove tail
+          this.tail[0] = this.head[0] - 1; //reassign tail coords
+          this.tail[1] = this.head[1];
+          this.snake.push(this.tail); //add tail to front
+          this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
+
           break;
         case "Right": 
-          this.x++
+
+          this.tail = this.snake.shift(); //remove tail
+          this.tail[0] = this.head[0] + 1; //reassign tail coords
+          this.tail[1] = this.head[1];
+          this.snake.push(this.tail); //add tail to front
+          this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
+
           break;
         default:
           return;
       } 
-      if (this.x >= Settings.board.dimX ) this.x = 0; //right bound
-      if (this.x < 0) this.x = Settings.board.dimX - 1; //left bound 
-      if (this.y >= Settings.board.dimX - 1) this.y = 0; //bottom bound
-      if (this.y < 0) this.y = Settings.board.dimY; //top bound
+      if (this.head[0] >= Settings.board.dimX ) this.head[0] = 0; //right bound
+      if (this.head[0] < 0) this.x = Settings.board.dimX - 1; //left bound 
+      if (this.head[1] >= Settings.board.dimX - 1) this.head[1] = 0; //bottom bound
+      if (this.head[1] < 0) this.head[1] = Settings.board.dimY; //top bound
     }
   }
 }
