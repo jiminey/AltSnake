@@ -61,8 +61,8 @@ export class Snake {
     for (let i = 0; i < this.snake.length ; i++) {
       this.ctx.fillStyle = "#ff0000";
       this.ctx.fillRect(
-        this.snake[i][0] * this.cellWidth,
-        this.snake[i][1] * this.cellHeight,
+        this.snake[i][0] * this.cellWidth, //x
+        this.snake[i][1] * this.cellHeight, //y
         30,
         30
       );
@@ -74,17 +74,23 @@ export class Snake {
 
     if (this.updateFrame % 10 === 0) {
       switch (this.dir) {
-        case "Down": 
+        case "Down":
+
           this.tail = this.snake.shift(); //remove tail
-          this.tail[0] = this.head[0];
-          this.tail[1] += 1; 
-          this.snake.push(this.tail);
+          this.tail[0] = this.head[0]; //reassign tail coords
+          this.tail[1] = this.head[1] + 1; 
+          this.snake.push(this.tail); //add tail to front
+          this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
+
           break;
         case "Up": 
-          this.tail = this.snake.shift();
-          this.tail[0] = this.head[0];
-          this.tail[1] -= 1;
-          this.snake.push(this.tail);
+
+          this.tail = this.snake.shift(); //remove tail
+          this.tail[0] = this.head[0]; //reassign tail coords
+          this.tail[1] = this.head[1] + 1;
+          this.snake.push(this.tail); //add tail to front
+          this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
+
           break;
         case "Left": 
           this.x--
