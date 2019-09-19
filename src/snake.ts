@@ -114,8 +114,9 @@ export class Snake {
           return;
       } 
       if (this.head[0] >= Settings.board.dimX ) this.head[0] = 0; //right bound
-      if (this.head[0] < 0) this.x = Settings.board.dimX - 1; //left bound 
-      if (this.head[1] >= Settings.board.dimX - 1) this.head[1] = 0; //bottom bound
+      if (this.head[0] < 0) this.head[0] = Settings.board.dimX - 1; //left bound 
+
+      if (this.head[1] >= Settings.board.dimY) this.head[1] = 0; //bottom bound
       if (this.head[1] < 0) this.head[1] = Settings.board.dimY; //top bound
     }
   }
