@@ -12,6 +12,7 @@ export class Snake {
   private snake:number[][] = [];
   private head:number[] = [];
   private tail:number[] = [];
+  private canMove: boolean;
 
   constructor(private canvas: HTMLCanvasElement) {
     this.ctx = canvas.getContext("2d");
@@ -26,8 +27,16 @@ export class Snake {
     this.head = this.snake[this.snake.length - 1] //last item
     this.tail = this.snake[0]
 
+    this.canMove = true;
+
     document.addEventListener("keydown", event => {
+
+      if (!this.canMove) return false;
+      this.canMove = false; 
+      setTimeout( () => {this.canMove = true} , 10);
+
       switch (event.key) {
+
         case "Down": // IE/Edge specific value
         case "ArrowDown":
           
@@ -95,6 +104,7 @@ export class Snake {
 
     if (this.updateFrame % 10 === 0) {
       switch (this.dir) {
+
         case "Down":
           if (this.prevDir !== "Up"){
             this.tail = this.snake.shift(); //remove tail
