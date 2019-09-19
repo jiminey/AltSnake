@@ -9,7 +9,7 @@ export class Apple {
 
     constructor(private canvas: HTMLCanvasElement) {
         this.ctx = canvas.getContext("2d");
-        this.basket = [ [3,4], [7,7] ]
+        this.basket = [ [3,4] ]
         
         let canvasWidth = canvas.width;
         let canvasHeight = canvas.height;
@@ -17,13 +17,9 @@ export class Apple {
         this.cellHeight = canvasHeight / Settings.board.dimY;
     }
 
-    getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
-    }
-
     draw() {
         for(let i = 0; i < this.basket.length; i++) {
-            this.ctx.fillStyle = "#f500";
+            this.ctx.fillStyle = "green";
             this.ctx.fillRect(
                 this.basket[i][0] * this.cellWidth, //x
                 this.basket[i][1] * this.cellHeight, //y
@@ -36,7 +32,7 @@ export class Apple {
     update(){
         this.updateFrame++;
 
-        if (this.updateFrame % 100 === 0) {
+        if (!this.basket.length) {
             this.basket.push([
                 Math.floor(Math.random() * Math.floor(Settings.board.dimX)),
                 Math.floor(Math.random() * Math.floor(Settings.board.dimY)),
