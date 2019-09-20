@@ -29,6 +29,9 @@ export class Game {
     this.snake.update();
     console.log("looping");
     console.log(++this.loopCount);
+
+    //collision
+    if(this.snake.head )
   }
 
   startLoop() {

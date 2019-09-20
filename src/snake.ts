@@ -15,7 +15,6 @@ export class Snake {
   private updateFrame: number = 0;
   private snake:SnakePieces = [];
   private head:number[] = [];
-  private tail:number[] = [];
   private canMove: boolean;
   
   private snakeCoord: SnakeCoordinate;
@@ -38,7 +37,6 @@ export class Snake {
     this.snakeCoord3 = [2,0]
     this.snake = [ this.snakeCoord1, this.snakeCoord2, this.snakeCoord3 ]
     this.head = this.snake[this.snake.length - 1] //last item
-    this.tail = this.snake[0]
 
     this.canMove = true;
 
@@ -120,41 +118,41 @@ export class Snake {
 
         case "Down":
           if (this.prevDir !== "Up"){
-            this.snakeCoord = this.snake.shift(); //remove tail
-            this.snakeCoord[0] = this.head[0]; //reassign snakeCoord coords
+            this.snakeCoord = this.snake.shift(); 
+            this.snakeCoord[0] = this.head[0]; 
             this.snakeCoord[1] = this.head[1] + 1; 
-            this.snake.push(this.snakeCoord); //add tail to front
-            this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
+            this.snake.push(this.snakeCoord); 
+            this.head = this.snake[this.snake.length - 1];
           }
           break;
           
         case "Up": 
           if (this.prevDir !== "Down") {          
-            this.snakeCoord = this.snake.shift(); //remove snakeCoord
-            this.snakeCoord[0] = this.head[0]; //reassign snakeCoord coords
+            this.snakeCoord = this.snake.shift(); 
+            this.snakeCoord[0] = this.head[0]; 
             this.snakeCoord[1] = this.head[1] - 1;
-            this.snake.push(this.snakeCoord); //add snakeCoord to front
-            this.head = this.snake[this.snake.length - 1]; //change head coords to the new snakeCoord/head
+            this.snake.push(this.snakeCoord); 
+            this.head = this.snake[this.snake.length - 1]; 
           }
           break;
 
         case "Left": 
           if (this.prevDir !== "Right") {
-            this.snakeCoord = this.snake.shift(); //remove snakeCoord
-            this.snakeCoord[0] = this.head[0] - 1; //reassign snakeCoord coords
+            this.snakeCoord = this.snake.shift(); 
+            this.snakeCoord[0] = this.head[0] - 1; 
             this.snakeCoord[1] = this.head[1];
-            this.snake.push(this.snakeCoord); //add snakeCoord to front
-            this.head = this.snake[this.snake.length - 1]; //change head coords to the new snakeCoord/head
+            this.snake.push(this.snakeCoord);
+            this.head = this.snake[this.snake.length - 1];
           }
           break;
 
         case "Right": 
           if (this.prevDir !== "Left") {
-            this.snakeCoord = this.snake.shift(); //remove snakeCoord
-            this.snakeCoord[0] = this.head[0] + 1; //reassign snakeCoord coords
+            this.snakeCoord = this.snake.shift(); 
+            this.snakeCoord[0] = this.head[0] + 1; 
             this.snakeCoord[1] = this.head[1];
-            this.snake.push(this.snakeCoord); //add tail to front
-            this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
+            this.snake.push(this.snakeCoord);
+            this.head = this.snake[this.snake.length - 1];
           }
           break;
 
