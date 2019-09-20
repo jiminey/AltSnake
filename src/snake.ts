@@ -176,8 +176,8 @@ export class Snake {
         this.head[1] === basket[0][1])
       {
         
-        // this.snakeCoord = [this.snake[2][0], this.snake[2][1]] 
-        // this.snake.push(this.snakeCoord)
+        this.snakeCoord = [this.snake[2][0], this.snake[2][1]] 
+        this.snake.unshift(this.snakeCoord)
         basket.shift() //remove apple
     }
   }
