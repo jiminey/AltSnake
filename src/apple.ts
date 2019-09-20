@@ -12,7 +12,7 @@ export class Apple {
     private cellHeight: number;
     
     public basket: Basket = [];
-    
+
     constructor(private canvas: HTMLCanvasElement) {
         this.ctx = canvas.getContext("2d");
         this.appleCoord = [3,4]
@@ -37,7 +37,7 @@ export class Apple {
         }
     }
 
-    update(){
+    update(snake: any){
         this.updateFrame++;
 
         if (!this.basket.length) {
@@ -45,7 +45,13 @@ export class Apple {
                 Math.floor(Math.random() * Math.floor(Settings.board.dimX)),
                 Math.floor(Math.random() * Math.floor(Settings.board.dimY))
             ]
-
+            while (snake.includes(this.appleCoord)) {
+                this.appleCoord = [
+                    Math.floor(Math.random() * Math.floor(Settings.board.dimX)),
+                    Math.floor(Math.random() * Math.floor(Settings.board.dimY))
+                ]
+            }
+            
             this.basket.push(this.appleCoord);
         }
     }

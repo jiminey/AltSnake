@@ -24,8 +24,8 @@ export class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.board.draw();
     this.snake.draw();
-    this.apple.update();
     this.apple.draw();
+    this.apple.update(this.snake.snake);
     this.snake.update(this.apple.basket);
     console.log("looping");
     console.log(++this.loopCount);
