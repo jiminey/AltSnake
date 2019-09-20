@@ -11,6 +11,8 @@ export class Game {
   private snake: Snake;
   private apple: Apple;
 
+  private gameState: string = "game";
+
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
@@ -22,6 +24,7 @@ export class Game {
   private loop() {
     this.requestedFrameId = requestAnimationFrame(() => this.loop());
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  
     this.board.draw();
     this.snake.draw();
     this.apple.draw();
