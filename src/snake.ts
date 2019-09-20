@@ -1,7 +1,8 @@
 import * as Settings from "./settings";
 import {Apple, Basket} from "./apple"
 
-
+type SnakeCoordinate = [number, number];
+type SnakePieces = SnakeCoordinate[];
 
 export class Snake {
   private ctx: CanvasRenderingContext2D;
@@ -12,7 +13,8 @@ export class Snake {
   private cellWidth: number;
   private cellHeight: number;
   private updateFrame: number = 0;
-  private snake:number[][] = [];
+  private snakeCoord: SnakeCoordinate;
+  private snake:SnakePieces = [];
   private head:number[] = [];
   private tail:number[] = [];
   private canMove: boolean;
