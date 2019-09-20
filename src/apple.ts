@@ -6,12 +6,13 @@ export type Basket = AppleCoordinate[];
 
 export class Apple {
     private ctx: CanvasRenderingContext2D;
-    private basket: Basket = [];
     private appleCoord: AppleCoordinate;
     private updateFrame:number = 0;
     private cellWidth: number;
     private cellHeight: number;
-
+    
+    public basket: Basket = [];
+    
     constructor(private canvas: HTMLCanvasElement) {
         this.ctx = canvas.getContext("2d");
         this.appleCoord = [3,4]

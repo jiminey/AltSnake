@@ -13,14 +13,16 @@ export class Snake {
   private cellWidth: number;
   private cellHeight: number;
   private updateFrame: number = 0;
-  private snake:SnakePieces = [];
-  private head:number[] = [];
   private canMove: boolean;
   
-  private snakeCoord: SnakeCoordinate;
   private snakeCoord1: SnakeCoordinate;
   private snakeCoord2: SnakeCoordinate;
   private snakeCoord3: SnakeCoordinate;
+  
+  public head:number[] = [];
+  public snake: SnakePieces = [];
+  public snakeCoord: SnakeCoordinate;
+
 
 
   constructor(private canvas: HTMLCanvasElement) {
@@ -110,7 +112,7 @@ export class Snake {
     }
   }
 
-  update() {
+  update(basket: any) {
     this.updateFrame++;
 
     if (this.updateFrame % 10 === 0) {
@@ -166,6 +168,12 @@ export class Snake {
       if (this.head[1] < 0) this.head[1] = Settings.board.dimY; //top bound
     }
 
+    //collision
 
+    if (this.head === basket[0]) {
+      this.snakeCoord = [this.snake[0][0], this.snake[0][1]]
+      this.snake.push(this.snakeCoord)
+      basket.shift() //remove apple
+    }
   }
 }

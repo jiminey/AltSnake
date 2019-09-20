@@ -26,12 +26,11 @@ export class Game {
     this.snake.draw();
     this.apple.draw();
     this.apple.update();
-    this.snake.update();
+    this.snake.update(this.apple.basket);
     console.log("looping");
     console.log(++this.loopCount);
 
-    //collision
-    if(this.snake.head )
+    
   }
 
   startLoop() {
