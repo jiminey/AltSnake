@@ -13,11 +13,15 @@ export class Snake {
   private cellWidth: number;
   private cellHeight: number;
   private updateFrame: number = 0;
-  private snakeCoord: SnakeCoordinate;
   private snake:SnakePieces = [];
   private head:number[] = [];
   private tail:number[] = [];
   private canMove: boolean;
+  
+  private snakeCoord: SnakeCoordinate;
+  private snakeCoord1: SnakeCoordinate;
+  private snakeCoord2: SnakeCoordinate;
+  private snakeCoord3: SnakeCoordinate;
 
 
   constructor(private canvas: HTMLCanvasElement) {
@@ -29,7 +33,10 @@ export class Snake {
     this.cellHeight = canvasHeight / Settings.board.dimY;
     this.x = 0;
     this.y = 0;
-    this.snake = [ [0,0], [1,0], [2,0] ]
+    this.snakeCoord1 = [0,0]
+    this.snakeCoord2 = [1,0]
+    this.snakeCoord3 = [2,0]
+    this.snake = [ this.snakeCoord1, this.snakeCoord2, this.snakeCoord3 ]
     this.head = this.snake[this.snake.length - 1] //last item
     this.tail = this.snake[0]
 
@@ -39,7 +46,7 @@ export class Snake {
 
       if (!this.canMove) return false;
       this.canMove = false; 
-      setTimeout( () => {this.canMove = true} , 10);
+      setTimeout( () => {this.canMove = true} , 100);
 
       switch (event.key) {
 
@@ -113,40 +120,40 @@ export class Snake {
 
         case "Down":
           if (this.prevDir !== "Up"){
-            this.tail = this.snake.shift(); //remove tail
-            this.tail[0] = this.head[0]; //reassign tail coords
-            this.tail[1] = this.head[1] + 1; 
-            this.snake.push(this.tail); //add tail to front
+            this.snakeCoord = this.snake.shift(); //remove tail
+            this.snakeCoord[0] = this.head[0]; //reassign snakeCoord coords
+            this.snakeCoord[1] = this.head[1] + 1; 
+            this.snake.push(this.snakeCoord); //add tail to front
             this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
           }
           break;
           
         case "Up": 
           if (this.prevDir !== "Down") {          
-            this.tail = this.snake.shift(); //remove tail
-            this.tail[0] = this.head[0]; //reassign tail coords
-            this.tail[1] = this.head[1] - 1;
-            this.snake.push(this.tail); //add tail to front
-            this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
+            this.snakeCoord = this.snake.shift(); //remove snakeCoord
+            this.snakeCoord[0] = this.head[0]; //reassign snakeCoord coords
+            this.snakeCoord[1] = this.head[1] - 1;
+            this.snake.push(this.snakeCoord); //add snakeCoord to front
+            this.head = this.snake[this.snake.length - 1]; //change head coords to the new snakeCoord/head
           }
           break;
 
         case "Left": 
           if (this.prevDir !== "Right") {
-            this.tail = this.snake.shift(); //remove tail
-            this.tail[0] = this.head[0] - 1; //reassign tail coords
-            this.tail[1] = this.head[1];
-            this.snake.push(this.tail); //add tail to front
-            this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
+            this.snakeCoord = this.snake.shift(); //remove snakeCoord
+            this.snakeCoord[0] = this.head[0] - 1; //reassign snakeCoord coords
+            this.snakeCoord[1] = this.head[1];
+            this.snake.push(this.snakeCoord); //add snakeCoord to front
+            this.head = this.snake[this.snake.length - 1]; //change head coords to the new snakeCoord/head
           }
           break;
 
         case "Right": 
           if (this.prevDir !== "Left") {
-            this.tail = this.snake.shift(); //remove tail
-            this.tail[0] = this.head[0] + 1; //reassign tail coords
-            this.tail[1] = this.head[1];
-            this.snake.push(this.tail); //add tail to front
+            this.snakeCoord = this.snake.shift(); //remove snakeCoord
+            this.snakeCoord[0] = this.head[0] + 1; //reassign snakeCoord coords
+            this.snakeCoord[1] = this.head[1];
+            this.snake.push(this.snakeCoord); //add tail to front
             this.head = this.snake[this.snake.length - 1]; //change head coords to the new tail/head
           }
           break;
@@ -161,7 +168,6 @@ export class Snake {
       if (this.head[1] < 0) this.head[1] = Settings.board.dimY; //top bound
     }
 
-    //collision
 
   }
 }
