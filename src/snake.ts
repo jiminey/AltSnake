@@ -10,14 +10,15 @@ export class Snake {
   private y: number;
   private dir: string = 'Right';
   private prevDir: string = 'Right';
+  private addDir: number; 
   private cellWidth: number;
   private cellHeight: number;
   private updateFrame: number = 0;
   private canMove: boolean;
   
   private snakeCoord1: SnakeCoordinate;
-  // private snakeCoord2: SnakeCoordinate;
-  // private snakeCoord3: SnakeCoordinate;
+  private snakeCoord2: SnakeCoordinate;
+  private snakeCoord3: SnakeCoordinate;
   
   public head:number[] = [];
   public snake: SnakePieces = [];
@@ -35,12 +36,12 @@ export class Snake {
     this.x = 0;
     this.y = 0;
     this.snakeCoord1 = [0,0]
-    // this.snakeCoord2 = [1,0]
-    // this.snakeCoord3 = [2,0]
-    // this.snake = [ this.snakeCoord1, this.snakeCoord2, this.snakeCoord3 ]
-    this.snake = [ this.snakeCoord1 ]
-    this.head = this.snake[this.snake.length - 1] //last item
+    this.snakeCoord2 = [1,0]
+    this.snakeCoord3 = [2,0]
+    this.snake = [ this.snakeCoord1, this.snakeCoord2, this.snakeCoord3 ]
 
+    this.head = this.snake[this.snake.length - 1] //last item
+    this.addDir = 0;
     this.canMove = true;
 
     document.addEventListener("keydown", event => {
@@ -174,8 +175,9 @@ export class Snake {
     if (this.head[0] === basket[0][0] && 
         this.head[1] === basket[0][1])
       {
-        this.snakeCoord = [this.snake[0][0], this.snake[0][1]]
-        this.snake.push(this.snakeCoord)
+        
+        // this.snakeCoord = [this.snake[2][0], this.snake[2][1]] 
+        // this.snake.push(this.snakeCoord)
         basket.shift() //remove apple
     }
   }
