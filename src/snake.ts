@@ -10,7 +10,6 @@ export class Snake {
   private y: number;
   private dir: string = 'Right';
   private prevDir: string = 'Right';
-  private addDir: number; 
   private cellWidth: number;
   private cellHeight: number;
   private updateFrame: number = 0;
@@ -20,8 +19,8 @@ export class Snake {
   private snakeCoord2: SnakeCoordinate;
   private snakeCoord3: SnakeCoordinate;
   
-  public head:number[] = [];
-  public snake: SnakePieces = [];
+  public head:number[];
+  public snake: SnakePieces;
   public snakeCoord: SnakeCoordinate;
 
 
@@ -170,17 +169,19 @@ export class Snake {
       if (this.head[1] < 0) this.head[1] = Settings.board.dimY; //top bound
     }
 
-    //collision
+    //apple collision
 
     if (this.head[0] === apple.basket[0][0] && 
         this.head[1] === apple.basket[0][1])
       {
         
-        this.snakeCoord = [this.snake[2][0], this.snake[2][1]] 
+        this.snakeCoord = [this.snake[0][0], this.snake[0][1]] 
         this.snake.unshift(this.snakeCoord)
         apple.basket.shift() //remove apple
         apple.onSnake = true; 
         
     }
+
+  
   }
 }

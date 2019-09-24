@@ -14,7 +14,7 @@ export class Game {
   private startScreen: any;
   private endScreen: any;
 
-  private gameState: string = "game";
+  private gameState: string;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -22,7 +22,7 @@ export class Game {
     this.board = new Board(canvas);
     this.snake = new Snake(canvas);
     this.apple = new Apple(canvas);
-
+    this.gameState = "game"
     this.startScreen = new Image();
     this.startScreen.src = 'example/PressStart.jpg'
 
@@ -54,6 +54,13 @@ export class Game {
       this.ctx.drawImage(this.endScreen, 0, 0, 500, 500)
     }
 
+    for(let i = 0; i < this.snake.snake.length - 3; i++) {
+      if (this.snake.snake[i][0] === this.snake.head[0] &&
+        this.snake.snake[i][1] === this.snake.head[1]) {
+          this.gameState = 'end'
+        }
+    }
+    
 
   }
 
