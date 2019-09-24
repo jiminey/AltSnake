@@ -60,8 +60,22 @@ export class Game {
           this.gameState = 'end'
         }
     }
+
+    document.addEventListener("keydown", event => {
+      switch (event.keyCode) {
+        case 32:
+          this.gameState = 'game'
+          this.restart(this.canvas)
+      }
+    })
     
 
+  }
+
+  restart(canvas: HTMLCanvasElement) {
+    this.board = new Board(canvas);
+    this.snake = new Snake(canvas);
+    this.apple = new Apple(canvas);
   }
 
   startLoop() {
