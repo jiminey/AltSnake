@@ -14,7 +14,7 @@ export class Game {
   private startScreen: any;
   private endScreen: any;
 
-  private gameState: string = "start";
+  private gameState: string = "game";
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -24,10 +24,10 @@ export class Game {
     this.apple = new Apple(canvas);
 
     this.startScreen = new Image();
-    this.startScreen.src = '../example/PressStart.jpg'
+    this.startScreen.src = 'example/PressStart.jpg'
 
     this.endScreen = new Image();
-    this.endScreen.src = '../example/gameover.jpg'
+    this.endScreen.src = 'example/gameover.jpg'
   }
 
   private loop() {
@@ -37,7 +37,7 @@ export class Game {
     if (this.gameState === "start") {
 
       //render start
-      this.ctx.drawImage(this.startScreen, 0, 0, 960, 640);
+      this.ctx.drawImage(this.startScreen, 0, 0, 500, 500);
 
     } else if (this.gameState ==="game") {
 
@@ -51,7 +51,7 @@ export class Game {
 
     } else if (this.gameState === "end") {
       //render gameover
-      this.ctx.drawImage(this.endScreen, 0, 0, 960, 640)
+      this.ctx.drawImage(this.endScreen, 0, 0, 500, 500)
     }
 
 
