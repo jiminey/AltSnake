@@ -10,14 +10,14 @@ export class Apple {
     private updateFrame:number = 0;
     private cellWidth: number;
     private cellHeight: number;
-    
+    private onSnake: boolean;
     public basket: Basket = [];
 
     constructor(private canvas: HTMLCanvasElement) {
         this.ctx = canvas.getContext("2d");
         this.appleCoord = [3,4]
         this.basket = [this.appleCoord]
-        
+        this.onSnake = true;
         let canvasWidth = canvas.width;
         let canvasHeight = canvas.height;
         this.cellWidth = canvasWidth / Settings.board.dimX;
@@ -39,19 +39,31 @@ export class Apple {
 
     update(snake: any){
         this.updateFrame++;
-
         if (!this.basket.length) {
             this.appleCoord = [
                 Math.floor(Math.random() * Math.floor(Settings.board.dimX)),
                 Math.floor(Math.random() * Math.floor(Settings.board.dimY))
             ]
-            while (snake.includes(this.appleCoord)) {
-                this.appleCoord = [
-                    Math.floor(Math.random() * Math.floor(Settings.board.dimX)),
-                    Math.floor(Math.random() * Math.floor(Settings.board.dimY))
-                ]
-            }
             
+            while (this.onSnake === true) {
+                this.onSnake = false;
+
+                for (let i = 0; i < snake.length; i++) {
+                    if (snake[i][0] === this.appleCoord[0] && snake[i][1] === this.appleCoord[1]) {
+                        this.appleCoord = [
+                            Math.floor(Math.random() * Math.floor(Settings.board.dimX)),
+                            Math.floor(Math.random() * Math.floor(Settings.board.dimY))
+                        ]
+                        this.onSnake = true; 
+                    }
+                }
+                //if snake is on apple, we set true/ and change
+
+                
+
+
+            }
+
             this.basket.push(this.appleCoord);
         }
     }

@@ -114,7 +114,7 @@ export class Snake {
     }
   }
 
-  update(basket: any) {
+  update(apple: any) {
     this.updateFrame++;
 
     if (this.updateFrame % 10 === 0) {
@@ -172,13 +172,15 @@ export class Snake {
 
     //collision
 
-    if (this.head[0] === basket[0][0] && 
-        this.head[1] === basket[0][1])
+    if (this.head[0] === apple.basket[0][0] && 
+        this.head[1] === apple.basket[0][1])
       {
         
         this.snakeCoord = [this.snake[2][0], this.snake[2][1]] 
         this.snake.unshift(this.snakeCoord)
-        basket.shift() //remove apple
+        apple.basket.shift() //remove apple
+        apple.onSnake = true; 
+        
     }
   }
 }

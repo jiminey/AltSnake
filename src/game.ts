@@ -29,7 +29,7 @@ export class Game {
     this.snake.draw();
     this.apple.draw();
     this.apple.update(this.snake.snake);
-    this.snake.update(this.apple.basket);
+    this.snake.update(this.apple);
     console.log("looping");
     console.log(++this.loopCount);
 
