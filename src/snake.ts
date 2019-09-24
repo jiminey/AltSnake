@@ -40,7 +40,6 @@ export class Snake {
     this.snake = [ this.snakeCoord1, this.snakeCoord2, this.snakeCoord3 ]
 
     this.head = this.snake[this.snake.length - 1] //last item
-    this.addDir = 0;
     this.canMove = true;
 
     document.addEventListener("keydown", event => {
