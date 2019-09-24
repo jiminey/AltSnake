@@ -1,5 +1,4 @@
 import * as Settings from "./settings";
-import {Apple, Basket} from "./apple"
 
 type SnakeCoordinate = [number, number];
 type SnakePieces = SnakeCoordinate[];
@@ -46,7 +45,7 @@ export class Snake {
 
       if (!this.canMove) return false;
       this.canMove = false; 
-      setTimeout( () => {this.canMove = true} , 100);
+      setTimeout( () => {this.canMove = true} , 50);
 
       switch (event.key) {
 
@@ -106,8 +105,8 @@ export class Snake {
       this.ctx.fillRect(
         this.snake[i][0] * this.cellWidth, //x
         this.snake[i][1] * this.cellHeight, //y
-        30,
-        30
+        20,
+        20
       );
     }
   }
@@ -115,7 +114,7 @@ export class Snake {
   update(apple: any) {
     this.updateFrame++;
 
-    if (this.updateFrame % 10 === 0) {
+    if (this.updateFrame % Settings.board.speed === 0) {
       switch (this.dir) {
 
         case "Down":
@@ -161,11 +160,15 @@ export class Snake {
         default:
           return;
       } 
-      if (this.head[0] >= Settings.board.dimX ) this.head[0] = 0; //right bound
-      if (this.head[0] < 0) this.head[0] = Settings.board.dimX - 1; //left bound 
 
-      if (this.head[1] >= Settings.board.dimY) this.head[1] = 0; //bottom bound
-      if (this.head[1] < 0) this.head[1] = Settings.board.dimY; //top bound
+      //condition for no bounds
+      // if (this.head[0] >= Settings.board.dimX ) this.head[0] = 0; //right bound
+      // if (this.head[0] < 0) this.head[0] = Settings.board.dimX - 1; //left bound 
+
+      // if (this.head[1] >= Settings.board.dimY) this.head[1] = 0; //bottom bound
+      // if (this.head[1] < 0) this.head[1] = Settings.board.dimY; //top bound
+
+      
     }
 
     //apple collision

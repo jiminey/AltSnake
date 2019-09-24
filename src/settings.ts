@@ -1,4 +1,5 @@
 export const board = {
-  dimX: 13,
-  dimY: 13,
+  dimX: 20,
+  dimY: 20,
+  speed: 5,
 }

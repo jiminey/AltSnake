@@ -31,8 +31,8 @@ export class Apple {
             this.ctx.fillRect(
                 this.basket[i][0] * this.cellWidth, //x
                 this.basket[i][1] * this.cellHeight, //y
-                30,
-                30
+                20,
+                20
             );
         }
     }

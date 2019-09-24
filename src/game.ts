@@ -1,3 +1,4 @@
+import * as Settings from "./settings";
 import { Board } from "./board";
 import { Snake } from "./snake";
 import { Apple } from "./apple";
@@ -61,6 +62,10 @@ export class Game {
         }
     }
 
+
+
+
+    //restart button
     document.addEventListener("keydown", event => {
       switch (event.keyCode) {
         case 32:
@@ -68,6 +73,14 @@ export class Game {
           this.restart(this.canvas)
       }
     })
+
+
+
+    if (this.snake.head[0] >= Settings.board.dimX) this.gameState ='end'; //right bound
+    if (this.snake.head[0] < 0) this.gameState ='end'; //left bound 
+
+    if (this.snake.head[1] >= Settings.board.dimY) this.gameState ='end'; //bottom bound
+    if (this.snake.head[1] < 0) this.gameState ='end'; //top bound
     
 
   }
