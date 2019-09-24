@@ -11,7 +11,10 @@ export class Game {
   private snake: Snake;
   private apple: Apple;
 
-  private gameState: string = "game";
+  private startScreen: any;
+  private endScreen: any;
+
+  private gameState: string = "start";
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -19,19 +22,37 @@ export class Game {
     this.board = new Board(canvas);
     this.snake = new Snake(canvas);
     this.apple = new Apple(canvas);
+
+    this.startScreen = new Image();
+    this.startScreen.src = '../example/PressStart.jpg'
+
+    this.endScreen = new Image();
+    this.endScreen.src = '../example/gameover.jpg'
   }
 
   private loop() {
     this.requestedFrameId = requestAnimationFrame(() => this.loop());
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  
-    this.board.draw();
-    this.snake.draw();
-    this.apple.draw();
-    this.apple.update(this.snake.snake);
-    this.snake.update(this.apple);
-    console.log("looping");
-    console.log(++this.loopCount);
+    
+    if (this.gameState === "start") {
+
+      //render start
+      this.ctx.drawImage(this.startScreen, 0, 0, 960, 640);
+
+    } else if (this.gameState ==="game") {
+
+      this.board.draw();
+      this.snake.draw();
+      this.apple.draw();
+      this.apple.update(this.snake.snake);
+      this.snake.update(this.apple);
+      console.log("looping");
+      console.log(++this.loopCount);
+
+    } else if (this.gameState === "end") {
+      //render gameover
+      this.ctx.drawImage(this.endScreen, 0, 0, 960, 640)
+    }
 
 
   }
