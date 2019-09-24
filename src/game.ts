@@ -69,8 +69,10 @@ export class Game {
     document.addEventListener("keydown", event => {
       switch (event.keyCode) {
         case 32:
-          this.gameState = 'game'
-          this.restart(this.canvas)
+          // this.gameState = 'game'
+          // this.restart(this.canvas)
+          location.reload();
+
       }
     })
 
