@@ -17,9 +17,16 @@ export class Snake {
   private snakeCoord1: SnakeCoordinate;
   private snakeCoord2: SnakeCoordinate;
   private snakeCoord3: SnakeCoordinate;
+
+  private snake2Coord1: SnakeCoordinate;
+  private snake2Coord2: SnakeCoordinate;
+  private snake2Coord3: SnakeCoordinate;
   
   public head:number[];
+  public head2:number[];
+
   public snake: SnakePieces;
+  public snake2: SnakePieces;
   public snakeCoord: SnakeCoordinate;
 
 
@@ -33,12 +40,23 @@ export class Snake {
     this.cellHeight = canvasHeight / Settings.board.dimY;
     this.x = 0;
     this.y = 0;
+
     this.snakeCoord1 = [0,0]
     this.snakeCoord2 = [1,0]
     this.snakeCoord3 = [2,0]
+
+    this.snake2Coord1 = [19,19]
+    this.snake2Coord2 = [18,19]
+    this.snake2Coord3 = [17,19]
+
     this.snake = [ this.snakeCoord1, this.snakeCoord2, this.snakeCoord3 ]
 
+    this.snake2 = [ this.snake2Coord1, this.snake2Coord2, this.snake2Coord3 ]
+
+
+    this.head2 = this.snake[this.snake.length - 1] //last item
     this.head = this.snake[this.snake.length - 1] //last item
+
     this.canMove = true;
 
     document.addEventListener("keydown", event => {
@@ -100,6 +118,7 @@ export class Snake {
 
 
   draw() {
+    
     for (let i = 0; i < this.snake.length ; i++) {
       this.ctx.fillStyle = "#ff0000";
       this.ctx.fillRect(
@@ -107,8 +126,21 @@ export class Snake {
         this.snake[i][1] * this.cellHeight, //y
         20,
         20
-      );
+      )
     }
+        
+        
+    for (let i = 0; i < this.snake2.length; i++) {
+      this.ctx.fillStyle = "#ff0000";
+      this.ctx.fillRect(
+        this.snake2[i][0] * this.cellWidth, //x
+        this.snake2[i][1] * this.cellHeight, //y
+        20,
+        20
+      )
+    }
+    
+
   }
 
   update(apple: any) {
