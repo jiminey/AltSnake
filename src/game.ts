@@ -95,12 +95,19 @@ export class Game {
     })
 
 
-
+    //outbound for snake1
     if (this.snake.head[0] >= Settings.board.dimX) this.gameState ='end'; //right bound
     if (this.snake.head[0] < 0) this.gameState ='end'; //left bound 
 
     if (this.snake.head[1] >= Settings.board.dimY) this.gameState ='end'; //bottom bound
     if (this.snake.head[1] < 0) this.gameState ='end'; //top bound
+
+    //outbound for snake2
+    if (this.snake.head2[0] >= Settings.board.dimX) this.gameState = 'end'; //right bound
+    if (this.snake.head2[0] < 0) this.gameState = 'end'; //left bound 
+
+    if (this.snake.head2[1] >= Settings.board.dimY) this.gameState = 'end'; //bottom bound
+    if (this.snake.head2[1] < 0) this.gameState = 'end'; //top bound
     
 
   }

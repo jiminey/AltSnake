@@ -47,7 +47,7 @@ export class Snake {
     this.x = 0;
     this.y = 0;
 
-    this.turn = 1; //0 is first player 1 is other player
+    this.turn = 0; //0 is first player 1 is other player
 
     this.snakeCoord1 = [0,0]
     this.snakeCoord2 = [1,0]
@@ -286,6 +286,7 @@ export class Snake {
         this.snake.unshift(this.snakeCoord)
         apple.basket.shift() //remove apple
         apple.onSnake = true; 
+        this.turn = 1;
         
     }
 
@@ -296,6 +297,7 @@ export class Snake {
       this.snake2.unshift(this.snakeCoord)
       apple.basket.shift() //remove apple
       apple.onSnake = true;
+      this.turn = 0;
 
     } // for second snake
 
