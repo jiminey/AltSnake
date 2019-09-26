@@ -27,7 +27,7 @@ export class Apple {
     draw() {
 
         for(let i = 0; i < this.basket.length; i++) {
-            this.ctx.fillStyle = "green";
+            this.ctx.fillStyle = "#ff5000";
             this.ctx.fillRect(
                 this.basket[i][0] * this.cellWidth, //x
                 this.basket[i][1] * this.cellHeight, //y

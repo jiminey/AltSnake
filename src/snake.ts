@@ -145,7 +145,7 @@ export class Snake {
     for (let i = 0; i < this.snake.length ; i++) {
 
       if (i === this.snake.length - 1) {
-        this.ctx.fillStyle = "red";
+        this.ctx.fillStyle = "cornflowerblue";
         this.ctx.fillRect(
           this.snake[i][0] * this.cellWidth, //x
           this.snake[i][1] * this.cellHeight, //y
@@ -169,7 +169,7 @@ export class Snake {
     for (let i = 0; i < this.snake2.length; i++) {
 
       if (i === this.snake2.length - 1) {
-        this.ctx.fillStyle = "red";
+        this.ctx.fillStyle = "cornflowerblue";
         this.ctx.fillRect(
           this.snake2[i][0] * this.cellWidth, //x
           this.snake2[i][1] * this.cellHeight, //y

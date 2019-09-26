@@ -41,7 +41,6 @@ export class Game {
       this.ctx.drawImage(this.startScreen, 0, 0, 500, 500);
 
     } else if (this.gameState ==="game") {
-
       this.board.draw();
       this.snake.draw();
       this.apple.draw();
@@ -49,10 +48,13 @@ export class Game {
       this.snake.update(this.apple);
       console.log("looping");
       console.log(++this.loopCount);
-
+      
     } else if (this.gameState === "end") {
       //render gameover
       this.ctx.drawImage(this.endScreen, 0, 0, 500, 500)
+      this.ctx.font = "30px White Sans Serif";
+      this.ctx.fillText("PRESS SPACEBAR", 130, 370);
+      this.ctx.fillText("TO PLAY AGAIN", 140, 410);
     }
 
     for(let i = 0; i < this.snake.snake.length - 1; i++) {
