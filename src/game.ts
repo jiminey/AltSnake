@@ -12,11 +12,11 @@ export class Game {
   private snake: Snake;
   private apple: Apple;
 
+  private point: any;
   private startScreen: any;
   private endScreen: any;
 
   private gameState: string;
-  private score: number;
   private highscore: number = 0;
 
   constructor(canvas: HTMLCanvasElement) {
@@ -31,6 +31,7 @@ export class Game {
 
     this.endScreen = new Image();
     this.endScreen.src = 'example/gameover.jpg'
+
   }
 
   private loop() {

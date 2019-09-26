@@ -37,6 +37,7 @@ export class Snake {
 
   public score: number = 0;
   public highscore: number = 0;
+  private point: any; 
 
 
 
@@ -50,7 +51,8 @@ export class Snake {
     this.cellHeight = canvasHeight / Settings.board.dimY;
     this.x = 0;
     this.y = 0;
-
+    this.point = new Audio();
+    this.point.src = 'example/sfx_point.wav'
     this.turn = 0; //0 is first player 1 is other player
 
     this.snakeCoord1 = [0,0]
@@ -314,6 +316,7 @@ export class Snake {
         this.snakeCoord = [this.snake[0][0], this.snake[0][1]] 
         this.snake.unshift(this.snakeCoord)
         apple.basket.shift() //remove apple
+        this.point.play();
         apple.onSnake = true; 
         this.turn = 1;
         this.score += 1
@@ -326,6 +329,7 @@ export class Snake {
       this.snakeCoord = [this.snake2[0][0], this.snake2[0][1]]
       this.snake2.unshift(this.snakeCoord)
       apple.basket.shift() //remove apple
+      this.point.play();
       apple.onSnake = true;
       this.turn = 0;
       this.score += 1

@@ -1,6 +1,5 @@
-### ts-snake
-* cd to `example/` and open index.html
+AltSnake is a variation of the classic Snake game.
 
-Create this app using typescript.
+Snake controls alternate every point.
 
-Good luck!
+Written in TypeScript, HTML Canvas.
