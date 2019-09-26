@@ -46,15 +46,22 @@ export class Game {
       this.apple.draw();
       this.apple.update(this.snake.snake);
       this.snake.update(this.apple);
+      this.ctx.font = "25px Arial";
+      this.ctx.fillStyle = "#0095DD";
+      this.ctx.fillText("Score: " + this.snake.score, 16, 30);
       console.log("looping");
       console.log(++this.loopCount);
-      
+
     } else if (this.gameState === "end") {
       //render gameover
       this.ctx.drawImage(this.endScreen, 0, 0, 500, 500)
       this.ctx.font = "30px White Sans Serif";
+      this.ctx.fillStyle = "white";
       this.ctx.fillText("PRESS SPACEBAR", 130, 370);
       this.ctx.fillText("TO PLAY AGAIN", 140, 410);
+      this.ctx.font = "25px Arial";
+      this.ctx.fillStyle = "#0095DD";
+      this.ctx.fillText("Score: " + this.snake.score, 16, 30);
     }
 
     for(let i = 0; i < this.snake.snake.length - 1; i++) {

@@ -36,6 +36,7 @@ export class Snake {
   public snakeCoord: SnakeCoordinate;
 
   public score: number = 0;
+  public highscore: number = 0;
 
 
 
