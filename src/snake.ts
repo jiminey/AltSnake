@@ -47,7 +47,7 @@ export class Snake {
     this.x = 0;
     this.y = 0;
 
-    this.turn = 0; //0 is first player 1 is other player
+    this.turn = 1; //0 is first player 1 is other player
 
     this.snakeCoord1 = [0,0]
     this.snakeCoord2 = [1,0]
@@ -62,7 +62,7 @@ export class Snake {
     this.snake2 = [ this.snake2Coord1, this.snake2Coord2, this.snake2Coord3 ]
 
 
-    this.head2 = this.snake[this.snake.length - 1] //last item
+    this.head2 = this.snake2[this.snake.length - 1] //last item
     this.head = this.snake[this.snake.length - 1] //last item
 
     this.canMove = true;
@@ -167,6 +167,9 @@ export class Snake {
     this.updateFrame++;
 
     if (this.updateFrame % Settings.board.speed === 0) {
+      if (this.turn === 0) {
+
+      
       switch (this.dir) {
 
         case "Down":
@@ -212,6 +215,9 @@ export class Snake {
         default:
           return;
         }
+      } else {
+
+      
 
           switch (this.dir2) {
 
@@ -258,6 +264,7 @@ export class Snake {
             default:
               return;
       } 
+    }
 
       //condition for no bounds
       // if (this.head[0] >= Settings.board.dimX ) this.head[0] = 0; //right bound
