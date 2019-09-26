@@ -55,11 +55,29 @@ export class Game {
       this.ctx.drawImage(this.endScreen, 0, 0, 500, 500)
     }
 
-    for(let i = 0; i < this.snake.snake.length - 3; i++) {
+    for(let i = 0; i < this.snake.snake.length - 1; i++) {
       if (this.snake.snake[i][0] === this.snake.head[0] &&
         this.snake.snake[i][1] === this.snake.head[1]) {
           this.gameState = 'end'
         }
+
+      if (this.snake.snake[i][0] === this.snake.head2[0] &&
+        this.snake.snake[i][1] === this.snake.head2[1]) {
+        this.gameState = 'end'
+      } 
+    } //collision for snake eating itself
+
+    for(let i = 0; i < this.snake.snake2.length - 1; i++) {
+      if (this.snake.snake2[i][0] === this.snake.head2[0] &&
+        this.snake.snake2[i][1] === this.snake.head2[1]) {
+          this.gameState = 'end'
+        } //itself
+
+      if (this.snake.snake2[i][0] === this.snake.head[0] &&
+        this.snake.snake2[i][1] === this.snake.head[1]) {
+        this.gameState = 'end'
+      } 
+        //other snake
     }
 
 

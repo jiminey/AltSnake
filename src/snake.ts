@@ -289,6 +289,16 @@ export class Snake {
         
     }
 
+    if (this.head2[0] === apple.basket[0][0] &&
+      this.head2[1] === apple.basket[0][1]) {
+
+      this.snakeCoord = [this.snake2[0][0], this.snake2[0][1]]
+      this.snake2.unshift(this.snakeCoord)
+      apple.basket.shift() //remove apple
+      apple.onSnake = true;
+
+    } // for second snake
+
   
   }
 }
