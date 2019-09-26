@@ -9,6 +9,12 @@ export class Snake {
   private y: number;
   private dir: string = 'Right';
   private prevDir: string = 'Right';
+
+  private dir2: string = 'Left';
+  private prevDir2: string = 'Left';
+
+  private turn: number = 0;
+
   private cellWidth: number;
   private cellHeight: number;
   private updateFrame: number = 0;
@@ -41,6 +47,8 @@ export class Snake {
     this.x = 0;
     this.y = 0;
 
+    this.turn = 0; //0 is first player 1 is other player
+
     this.snakeCoord1 = [0,0]
     this.snakeCoord2 = [1,0]
     this.snakeCoord3 = [2,0]
@@ -70,36 +78,48 @@ export class Snake {
         case "Down": // IE/Edge specific value
         case "ArrowDown":
           
-        if (this.prevDir !== "Up"){
+        if (this.prevDir !== "Up" && this.turn === 0){
           this.dir = "Down"
           this.prevDir = this.dir;
+        } else if (this.prevDir2 !== "Up" && this.turn === 1){
+          this.dir2 = "Down"
+          this.prevDir2 = this.dir2;
         }
         break;
 
         case "Up": // IE/Edge specific value
         case "ArrowUp":
 
-        if (this.prevDir !== "Down") {
+        if (this.prevDir !== "Down" && this.turn === 0) {
           this.dir = "Up"
           this.prevDir = this.dir;
+        } else if (this.prevDir2 !== "Down" && this.turn === 1) {
+          this.dir2 = "Up"
+          this.prevDir2 = this.dir2;
         }
         break;
         
         case "Right": // IE/Edge specific value
         case "ArrowRight":
 
-          if (this.prevDir !== "Left") {
+          if (this.prevDir !== "Left" && this.turn === 0 ) {
             this.dir = "Right"
             this.prevDir = this.dir;
+          } else if (this.prevDir2 !== "Left" && this.turn === 1) {
+            this.dir2 = "Right"
+            this.prevDir2 = this.dir2;
           }
         break;
           
         case "Left": // IE/Edge specific value
         case "ArrowLeft":
 
-        if (this.prevDir !== "Right") {
+        if (this.prevDir !== "Right" && this.turn === 0) {
           this.dir = "Left"
           this.prevDir = this.dir;
+        } else if (this.prevDir2 !== "Right" && this.turn === 1) {
+          this.dir2 = "Left"
+          this.prevDir2 = this.dir2;
         }
         break;
 
@@ -150,7 +170,7 @@ export class Snake {
       switch (this.dir) {
 
         case "Down":
-          if (this.prevDir !== "Up"){
+          if (this.prevDir !== "Up" && this.turn === 0){
             this.snakeCoord = this.snake.shift(); 
             this.snakeCoord[0] = this.head[0]; 
             this.snakeCoord[1] = this.head[1] + 1; 
@@ -160,7 +180,7 @@ export class Snake {
           break;
           
         case "Up": 
-          if (this.prevDir !== "Down") {          
+          if (this.prevDir !== "Down" && this.turn === 0) {          
             this.snakeCoord = this.snake.shift(); 
             this.snakeCoord[0] = this.head[0]; 
             this.snakeCoord[1] = this.head[1] - 1;
@@ -170,7 +190,7 @@ export class Snake {
           break;
 
         case "Left": 
-          if (this.prevDir !== "Right") {
+          if (this.prevDir !== "Right" && this.turn === 0) {
             this.snakeCoord = this.snake.shift(); 
             this.snakeCoord[0] = this.head[0] - 1; 
             this.snakeCoord[1] = this.head[1];
@@ -180,7 +200,7 @@ export class Snake {
           break;
 
         case "Right": 
-          if (this.prevDir !== "Left") {
+          if (this.prevDir !== "Left" && this.turn === 0) {
             this.snakeCoord = this.snake.shift(); 
             this.snakeCoord[0] = this.head[0] + 1; 
             this.snakeCoord[1] = this.head[1];
@@ -191,6 +211,52 @@ export class Snake {
 
         default:
           return;
+        }
+
+          switch (this.dir2) {
+
+            case "Down":
+              if (this.prevDir2 !== "Up" && this.turn === 1) {
+                this.snakeCoord = this.snake2.shift();
+                this.snakeCoord[0] = this.head2[0];
+                this.snakeCoord[1] = this.head2[1] + 1;
+                this.snake2.push(this.snakeCoord);
+                this.head2 = this.snake2[this.snake2.length - 1];
+              }
+              break;
+
+            case "Up":
+              if (this.prevDir2 !== "Down" && this.turn === 1) {
+                this.snakeCoord = this.snake2.shift();
+                this.snakeCoord[0] = this.head2[0];
+                this.snakeCoord[1] = this.head2[1] - 1;
+                this.snake2.push(this.snakeCoord);
+                this.head2 = this.snake2[this.snake2.length - 1];
+              }
+              break;
+
+            case "Left":
+              if (this.prevDir2 !== "Right" && this.turn === 1) {
+                this.snakeCoord = this.snake2.shift();
+                this.snakeCoord[0] = this.head2[0] - 1;
+                this.snakeCoord[1] = this.head2[1];
+                this.snake2.push(this.snakeCoord);
+                this.head2 = this.snake2[this.snake2.length - 1];
+              }
+              break;
+
+            case "Right":
+              if (this.prevDir2 !== "Left" && this.turn === 1) {
+                this.snakeCoord = this.snake2.shift();
+                this.snakeCoord[0] = this.head2[0] + 1;
+                this.snakeCoord[1] = this.head2[1];
+                this.snake2.push(this.snakeCoord);
+                this.head2 = this.snake2[this.snake2.length - 1];
+              }
+              break;
+
+            default:
+              return;
       } 
 
       //condition for no bounds
