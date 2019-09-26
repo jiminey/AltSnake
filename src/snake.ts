@@ -35,6 +35,9 @@ export class Snake {
   public snake2: SnakePieces;
   public snakeCoord: SnakeCoordinate;
 
+  public score: number = 0;
+
+
 
 
   constructor(private canvas: HTMLCanvasElement) {
@@ -140,24 +143,49 @@ export class Snake {
   draw() {
     
     for (let i = 0; i < this.snake.length ; i++) {
-      this.ctx.fillStyle = "#ff0000";
-      this.ctx.fillRect(
-        this.snake[i][0] * this.cellWidth, //x
-        this.snake[i][1] * this.cellHeight, //y
-        20,
-        20
-      )
+
+      if (i === this.snake.length - 1) {
+        this.ctx.fillStyle = "red";
+        this.ctx.fillRect(
+          this.snake[i][0] * this.cellWidth, //x
+          this.snake[i][1] * this.cellHeight, //y
+          20,
+          20
+        )
+      } 
+      else {
+        this.ctx.fillStyle = "pink";
+        this.ctx.fillRect(
+          this.snake[i][0] * this.cellWidth, //x
+          this.snake[i][1] * this.cellHeight, //y
+          20,
+          20
+        )
+      } 
+
     }
         
         
     for (let i = 0; i < this.snake2.length; i++) {
-      this.ctx.fillStyle = "#ff0000";
-      this.ctx.fillRect(
-        this.snake2[i][0] * this.cellWidth, //x
-        this.snake2[i][1] * this.cellHeight, //y
-        20,
-        20
-      )
+
+      if (i === this.snake2.length - 1) {
+        this.ctx.fillStyle = "red";
+        this.ctx.fillRect(
+          this.snake2[i][0] * this.cellWidth, //x
+          this.snake2[i][1] * this.cellHeight, //y
+          20,
+          20
+        )
+      }
+      else {
+        this.ctx.fillStyle = "aquamarine";
+        this.ctx.fillRect(
+          this.snake2[i][0] * this.cellWidth, //x
+          this.snake2[i][1] * this.cellHeight, //y
+          20,
+          20
+        )
+      }
     }
     
 
@@ -287,7 +315,8 @@ export class Snake {
         apple.basket.shift() //remove apple
         apple.onSnake = true; 
         this.turn = 1;
-        
+        this.score += 1
+
     }
 
     if (this.head2[0] === apple.basket[0][0] &&
@@ -298,6 +327,8 @@ export class Snake {
       apple.basket.shift() //remove apple
       apple.onSnake = true;
       this.turn = 0;
+      this.score += 1
+      setTimeout(() => { }, 1000)
 
     } // for second snake
 

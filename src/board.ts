@@ -18,7 +18,7 @@ export class Board {
   }
 
   draw() {
-    this.ctx.fillStyle = "#000000"
+    this.ctx.fillStyle = "#999"
     for (let row = 0; row < Settings.board.dimY; row++) {
       for (let col = 0; col < Settings.board.dimX; col++) {
         this.ctx.fillRect(col * this.cellWidth, row * this.cellHeight, this.cellWidth - 3, this.cellHeight - 3);
