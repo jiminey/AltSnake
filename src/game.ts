@@ -52,11 +52,11 @@ export class Game {
       this.apple.update(this.snake.snake);
       this.snake.update(this.apple);
 
-      this.ctx.font = "14px Arial";
+      this.ctx.font = "14px Sans Serif";
       this.ctx.fillStyle = "#0095DD";
       this.ctx.fillText("Score: " + this.snake.score, 16, 30);
 
-      this.ctx.font = "14px Arial";      
+      this.ctx.font = "13px Sans Serif";      
       this.ctx.fillStyle = "#0095DD";
       this.ctx.fillText("HighScore: " + this.highscore, 16, 50);
       console.log("looping");
@@ -74,11 +74,11 @@ export class Game {
       this.ctx.fillStyle = "white";
       this.ctx.fillText("PRESS SPACEBAR", 130, 370);
       this.ctx.fillText("TO PLAY AGAIN", 140, 410);
-      this.ctx.font = "14px Arial";
+      this.ctx.font = "14px Sans Serif";
       this.ctx.fillStyle = "#0095DD";
       this.ctx.fillText("Score: " + this.snake.score, 16, 30);
 
-      this.ctx.font = "14px Arial";
+      this.ctx.font = "13px Sans Serif";
       this.ctx.fillStyle = "#0095DD";
       this.ctx.fillText("HighScore: " + this.highscore, 16, 50);
     }

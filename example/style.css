@@ -12,17 +12,15 @@
     font-size: 40px;
     align-self: center;
     font-family: sans-serif;
-    color: black;
+    color: teal;
     
 }
 
 .instruction {
     position: absolute;
     top: 135px;
-    font-size: 20px;
     flex-wrap: wrap;
     align-self: flex-start;
-    
 }
 
 .game {
@@ -39,5 +37,22 @@ body {
 
 .word {
     font-family: sans-serif;
+
+}
+
+
+a:link {
+    color: teal;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.fa-linkedin-in:before {
+    content: "\f0e1";
+    color: teal;
+}
+.fa-github-square:before {
+    content: "\f092";
+    color: teal;
 
 }
