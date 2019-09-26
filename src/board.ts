@@ -6,8 +6,6 @@ export class Board {
   private ctx: CanvasRenderingContext2D;
   private cellWidth: number;
   private cellHeight: number;
-  pos: [number,number];
-  pos2: number[];
 
   constructor(private canvas: HTMLCanvasElement) {
     this.ctx = canvas.getContext("2d");
@@ -15,6 +13,8 @@ export class Board {
     this.canvasHeight = canvas.height;
     this.cellWidth = this.canvasWidth / Settings.board.dimX;
     this.cellHeight = this.canvasHeight / Settings.board.dimY;
+
+    
   }
 
   draw() {

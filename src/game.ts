@@ -11,11 +11,8 @@ export class Game {
   private board: Board;
   private snake: Snake;
   private apple: Apple;
-
-  private point: any;
   private startScreen: any;
   private endScreen: any;
-
   private gameState: string;
   private highscore: number = 0;
 
@@ -28,10 +25,8 @@ export class Game {
     this.gameState = "game"
     this.startScreen = new Image();
     this.startScreen.src = 'example/PressStart.jpg'
-
     this.endScreen = new Image();
     this.endScreen.src = 'example/gameover.jpg'
-
   }
 
   private loop() {
