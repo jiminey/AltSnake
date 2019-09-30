@@ -32,7 +32,8 @@
 }
 
 body {
-    background: lightcyan
+    background: lightcyan;
+    background-image: url('https://github.com/jiminey/JimmyJams/blob/master/app/assets/images/logic.jpg?raw=true');
 }
 
 .word {
