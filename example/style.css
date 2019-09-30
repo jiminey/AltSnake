@@ -29,11 +29,12 @@
     align-self: center;
     border: 1px solid black;
     position: relative;
+    opacity: 50%;
 }
 
 body {
-    background: lightcyan;
-    background-image: url('https://github.com/jiminey/JimmyJams/blob/master/app/assets/images/logic.jpg?raw=true');
+    background-image: url('https://github.com/jiminey/AltSnake/blob/master/example/background.jpg?raw=true');
+
 }
 
 .word {
