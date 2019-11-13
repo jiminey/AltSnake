@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const game = new Game(canvas);
 
   game.startLoop();
-  
+
   // setTimeout(() => {
   //   game.endLoop();
   // }, 2000);
